@@ -5,7 +5,7 @@ import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSli
 
 export default function Signin() {
   const [formData, setFormData] = useState({})
-  const { loading, error } = useSelector((state) => state.user)
+  const { loading, error, currentUser } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -22,9 +22,8 @@ export default function Signin() {
   }
  
   const handleSubmit = async(e) => {
-    // to prevent refrenshing the page
+    // to prevent refreshing the page
     e.preventDefault()
-    console.log("im here")
     try{
       dispatch(signInStart())
       const res = await fetch('/api/auth/signin', {
@@ -47,7 +46,7 @@ export default function Signin() {
         dispatch(signInFailure(err.message))
       }
   }
- 
+  console.log(currentUser)
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">

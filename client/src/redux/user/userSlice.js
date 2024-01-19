@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     currentUser: null,
     error: null, 
-    loading: false
+    loading: false,
 }
 
 const userSlice = createSlice({
@@ -27,5 +27,4 @@ const userSlice = createSlice({
 })
 
 export const {signInStart, signInSuccess, signInFailure} = userSlice.actions;
-
 export default userSlice.reducer
