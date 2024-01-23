@@ -6,7 +6,7 @@ import { updateUserStart, updateuserSuccess, updateUserFailure,
           deleteUserFailure, deleteUserSuccess, deleteUserStart,
         signoutUserStart, signoutUserSuccess, signoutUserFailure } from '../redux/user/userSlice'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Profile() {
     const dispatch = useDispatch()
@@ -145,6 +145,9 @@ export default function Profile() {
           {loading? 'Loading...' : 'Update'}
         
         </button>
+        <Link to={"/create-listing"} className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'>
+        Create Listing
+        </Link>
       </form>
       <div className='flex justify-between mt-5'>
         <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>delete account</span>
