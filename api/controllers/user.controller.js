@@ -31,3 +31,14 @@ export const updateUser = async (req,res, next) => {
     }
 }
 
+
+export const deleteUser = async (req,res, next) => {
+    if(req.user.id!== req.params.id) return next(errorHandler(401, "Unauthorized to do change"));
+
+    try {
+        await User.findByIdAndDelete(req.params.id)
+        res.status(200).json("user deleted").clearCookie("access_token")
+    } catch (error) {
+        next(error)
+    }
+}
