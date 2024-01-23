@@ -25,15 +25,15 @@ export default function Profile() {
         const data = await res.json()
 
         if(data.success === false){
-          dispatch(signoutUserFailure(data.message))
+          dispatch(deleteUserFailure(data.message))
           return;
         }
-        dispatch(signoutUserSuccess(data))
-          
+        dispatch(deleteUserSuccess(data))
+        navigate('/Sign-in')
       } 
       catch (error) {
 
-        dispatch(signoutUserFailure(error.message))
+        dispatch(deleteUserFailure(error.message))
         
       }
     }
@@ -52,7 +52,7 @@ export default function Profile() {
             return;
           }
           dispatch(deleteUserSuccess(data))
-          navigate('/signin')
+          navigate('/Sign-in')
 
       } catch (error) {
         dispatch(deleteUserFailure(error.message))
